@@ -121,10 +121,11 @@ export const configGame = {
 const timeBlock = document.querySelector('.timer-game__time');
 const fieldItems = document.querySelector('.field__items');
 const pictureItems = document.querySelectorAll('[data-picture]');
+const game = document.querySelector('.game');
 
 
 export function startMemoryGame() {
-	fieldItems.classList.add(`_game-${configGame.currentLevel}`);
+	game.classList.add(`_game-${configGame.currentLevel}`);
 
 	// Перемешиваем массив
 	configGame.arrGame = shuffle(configGame.startArr);
@@ -253,7 +254,8 @@ export function resetGame() {
 	setTimeout(() => {
 		timeBlock.textContent = `0:${configGame.timeConst}`;
 		fieldItems.setAttribute('class', 'field__items');
+		game.setAttribute('class', 'wrapper__game game');
 
 		hideAllItems();
-	}, 1500);
+	}, 1000);
 }

@@ -108,13 +108,19 @@
 		width: 100%;
 		min-height: 100%;
 
-		background-image: url("@img/game/bg-1.png");
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
 		padding: 25px;
 		@media (max-height: 650px) {
 			padding: 5px;
+		}
+		._game-1 & {
+			background-image: url("@img/game/bg-1.png");
+		}
+		._game-2 &,
+		._game-3 & {
+			background-image: url("@img/game/bg-2.png");
 		}
 	}
 
