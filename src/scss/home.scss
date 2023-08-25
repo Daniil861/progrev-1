@@ -261,6 +261,9 @@
 				visibility: visible;
 			}
 		}
+		&._shake {
+			animation: shake 0.75s ease 0s;
+		}
 	}
 }
 .footer-game {
@@ -289,6 +292,10 @@
 			width: 70px;
 			height: 70px;
 			font-size: 50px;
+		}
+		&._hold {
+			opacity: 0.5;
+			pointer-events: none;
 		}
 	}
 }
@@ -416,5 +423,21 @@
 	100% {
 		transform: rotate(0deg);
 		right: 0;
+	}
+}
+
+@keyframes shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-10%);
+	}
+	50% {
+		transform: translateX(10%);
+	}
+	75% {
+		transform: translateX(-10%);
 	}
 }

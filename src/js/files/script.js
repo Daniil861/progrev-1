@@ -209,6 +209,31 @@ export function addNewOpenedPicture(item) {
 	}
 }
 
+export function useBonus1() {
+	if (configGame.arrCompare.length === 1) {
+		const number = configGame.arrCompare[0];
+		const findItem = Array.from(pictureItems).find(item => +item.dataset.picture === number && item.classList.contains('_hide'));
+		findItem.classList.add('_shake');
+		setTimeout(() => {
+			findItem.classList.remove('_shake');
+		}, 1000);
+	} else if (configGame.arrCompare.length === 0) {
+		let number;
+		pictureItems.forEach(item => {
+			if (item.classList.contains('_hide')) number = +item.dataset.picture;
+		})
+		pictureItems.forEach(item => {
+			if (+item.dataset.picture === number) item.classList.add('_shake');
+		})
+		setTimeout(() => {
+			pictureItems.forEach(item => {
+				if (item.classList.contains('_shake')) item.classList.remove('_shake');
+			})
+		}, 750);
+
+	}
+}
+
 function checkCollision() {
 	if (configGame.arrCompare[0] === configGame.arrCompare[1]) {
 		return true;
@@ -255,6 +280,7 @@ export function resetGame() {
 		timeBlock.textContent = `0:${configGame.timeConst}`;
 		fieldItems.setAttribute('class', 'field__items');
 		game.setAttribute('class', 'wrapper__game game');
+		document.querySelectorAll('.footer-game__button').forEach(button => button.classList.contains('_hold') ? button.classList.remove('_hold') : false)
 
 		hideAllItems();
 	}, 1000);

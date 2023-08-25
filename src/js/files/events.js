@@ -1,5 +1,5 @@
 
-import { configGame, startMemoryGame, addNewOpenedPicture, stopGame, resetGame } from './script.js';
+import { configGame, startMemoryGame, addNewOpenedPicture, stopGame, resetGame, useBonus1 } from './script.js';
 import { startData } from './startData.js';
 
 
@@ -57,5 +57,14 @@ document.addEventListener('click', (e) => {
 		configGame.state === 2 &&
 		targetElement.closest('[data-picture]').classList.contains('_hide')) {
 		addNewOpenedPicture(targetElement.closest('[data-picture]'));
+	}
+
+	if (targetElement.closest('[data-button="bonus-1"]')) {
+		useBonus1();
+		targetElement.closest('[data-button="bonus-1"]').classList.add('_hold');
+	}
+	if (targetElement.closest('[data-button="bonus-2"]')) {
+		configGame.timeCurrent += 5;
+		targetElement.closest('[data-button="bonus-2"]').classList.add('_hold');
 	}
 })
