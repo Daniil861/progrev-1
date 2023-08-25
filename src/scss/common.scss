@@ -1,0 +1,83 @@
+.button {
+	position: relative;
+	z-index: 1;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border: 2px solid #fff;
+	background: linear-gradient(180deg, #8d07df 0%, #17206d 100%, #61176d 100%);
+
+	user-select: none;
+
+	transition: all 0.3s ease 0s;
+
+	span {
+		color: #fff;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+
+	// &._hold {
+	// 	opacity: 0.5;
+	// 	pointer-events: none;
+	// }
+}
+
+.button-home {
+	position: relative;
+
+	width: 35.274px;
+	height: 35.274px;
+	border-radius: 50%;
+
+	border: 1px solid #fff;
+
+	background: url("@img/icons/arrow-left.svg") center/ 80% no-repeat, linear-gradient(180deg, #fa1f6e 0%, #7a0c34 100%);
+
+	&:active {
+		transform: translateY(3px);
+	}
+}
+
+[type="button"] {
+	transition: all 0.3s ease 0s;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	&:active {
+		transform: translateY(3px);
+	}
+}
+
+//========================================================================================================================================================
+
+.score {
+	white-space: nowrap;
+	&._no-money {
+		animation: no-money 0.7s ease 2;
+	}
+	&._delete-money {
+		animation: delete-money 0.7s ease;
+	}
+	&._anim-add-money {
+		animation: add-money 0.5s ease 3;
+	}
+}
+
+.icon-game {
+	&._anim-icon-jump {
+		animation: jump_icon 5s ease;
+	}
+	&._anim-icon-scale {
+		animation: scale_icon 0.5s ease 2;
+	}
+	&._anim-icon-rotate {
+		animation: rotate_icon 1.5s ease-out 1;
+	}
+	&._anim-icon-rotate-2 {
+		animation: rotate_icon-2 1.5s ease 1;
+	}
+}
+//========================================================================================================================================================
