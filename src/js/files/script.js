@@ -212,26 +212,34 @@ export function addNewOpenedPicture(item) {
 export function useBonus1() {
 	if (configGame.arrCompare.length === 1) {
 		const number = configGame.arrCompare[0];
-		const findItem = Array.from(pictureItems).find(item => +item.dataset.picture === number && item.classList.contains('_hide'));
-		findItem.classList.add('_shake');
-		setTimeout(() => {
-			findItem.classList.remove('_shake');
-		}, 1000);
-	} else if (configGame.arrCompare.length === 0) {
-		let number;
-		pictureItems.forEach(item => {
-			if (item.classList.contains('_hide')) number = +item.dataset.picture;
-		})
-		pictureItems.forEach(item => {
-			if (+item.dataset.picture === number) item.classList.add('_shake');
-		})
-		setTimeout(() => {
-			pictureItems.forEach(item => {
-				if (item.classList.contains('_shake')) item.classList.remove('_shake');
-			})
-		}, 750);
+		if (number > 0) {
+			console.log(number);
+			const findItem = Array.from(pictureItems).find(item => +item.dataset.picture === number && item.classList.contains('_hide'));
+			findItem.classList.add('_shake');
+			setTimeout(() => {
+				findItem.classList.remove('_shake');
+			}, 1000);
+		} else {
+			shakeTwoItems();
+		}
 
+	} else if (configGame.arrCompare.length === 0) {
+		shakeTwoItems()
 	}
+}
+function shakeTwoItems() {
+	let number;
+	pictureItems.forEach(item => {
+		if (item.classList.contains('_hide') && +item.dataset.picture > 0) number = +item.dataset.picture;
+	})
+	pictureItems.forEach(item => {
+		if (+item.dataset.picture === number) item.classList.add('_shake');
+	})
+	setTimeout(() => {
+		pictureItems.forEach(item => {
+			if (item.classList.contains('_shake')) item.classList.remove('_shake');
+		})
+	}, 750);
 }
 
 function checkCollision() {
